@@ -9,13 +9,19 @@ arcade.set_background_color(arcade.color.ARSENIC)
 
 arcade.start_render()
 
+# Draw the face
 x = 300
 y = 300
 radius = 200
 arcade.draw_circle_filled(x, y, radius, arcade.color.AERO_BLUE)
 
-
+#Right eye
 arcade.draw_circle_filled(350,350,10, arcade.color.BLACK)
+
+#Left eye
+arcade.draw_circle_filled(250, 350, 10, arcade.color.BLACK)
+
+
 
 arcade.finish_render()
 
