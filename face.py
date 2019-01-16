@@ -21,6 +21,8 @@ arcade.draw_circle_filled(350,350,10, arcade.color.BLACK)
 #Left eye
 arcade.draw_circle_filled(250, 350, 10, arcade.color.BLACK)
 
+#mouth
+arcade.draw_arc_outline(300, 230, 160, 20, arcade.color.BLACK, 70, 170, 100)
 
 
 arcade.finish_render()
