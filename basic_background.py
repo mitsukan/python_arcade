@@ -30,6 +30,8 @@ def main():
 
     draw_background()
     draw_tree(400, 280)
+    draw_tree(280, 230)
+    draw_tree(165, 240)
 
     arcade.finish_render()
 
