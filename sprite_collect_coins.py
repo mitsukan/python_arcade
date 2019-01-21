@@ -2,8 +2,8 @@ import arcade
 
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
-SPRITE_COIN_SCALING = 0.2
-
+SPRITE_COIN_SCALING = 0.1
+SPRITE_PLAYER_SCALING = 0.1
 
 class MyGame(arcade.Window):
     """ Main application class. """
@@ -30,6 +30,9 @@ class MyGame(arcade.Window):
         arcade.start_render()
         self.player_list.draw()
 
+    def on_mouse_motion(self, x, y, dx, dy):
+        self.player_sprite.center_x = x
+        self.player_sprite.center_y = y
 
     def update(self, delta_time):
         """ All the logic to move, and the game logic goes here. """
