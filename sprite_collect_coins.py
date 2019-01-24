@@ -52,7 +52,13 @@ class MyGame(arcade.Window):
 
     def update(self, delta_time):
         """ All the logic to move, and the game logic goes here. """
-        pass
+        self.coin_list.update()
+        coins_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
+
+        for coin in coins_hit_list:
+            coin.kill()
+            self.score += 1
+
 
 
 def main():
