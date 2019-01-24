@@ -20,6 +20,8 @@ class MyGame(arcade.Window):
         self.coin_list = None
         arcade.set_background_color(arcade.color.AMAZON)
 
+        self.score = 0
+
     def setup(self):
         # start a new sprite list
         self.player_list = arcade.SpriteList()
@@ -40,9 +42,17 @@ class MyGame(arcade.Window):
     def on_draw(self):
         """ Render the screen. """
         arcade.start_render()
-        # Draw the list
+        # Draw the sprites in lists
         self.player_list.draw()
         self.coin_list.draw()
+
+        #put some text on the screen
+        output = "Score: {}".format(self.score)
+        arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+
+        if self.score == 50:
+            arcade.draw_text("YOU WIN!", 100,300, arcade.color.WHITE, 60)
+
 
     def on_mouse_motion(self, x, y, dx, dy):
         # This is an override of the method to activate the functionality.
