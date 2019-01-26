@@ -54,14 +54,26 @@ class MyGame(arcade.Window):
             arcade.draw_text("YOU WIN!", 100,300, arcade.color.WHITE, 60)
 
 
-    def on_mouse_motion(self, x, y, dx, dy):
-        # This is an override of the method to activate the functionality.
-        # On mouse motion, update the player sprite with the following:
-        self.player_sprite.center_x = x
-        self.player_sprite.center_y = y
+    def on_key_press(self, key, modifiers):
+        if key == arcade.key.UP:
+            self.player_sprite.change_y = MOVEMENT_SPEED
+        elif key == arcade.key.DOWN:
+            self.player_sprite.change_y = -MOVEMENT_SPEED
+        elif key == arcade.key.LEFT:
+            self.player_sprite.change_x = -MOVEMENT_SPEED
+        elif key == arcade.key.RIGHT:
+            self.player_sprite.change_x = MOVEMENT_SPEED
+
+    def on_key_release(self, key, modifiers):
+        if key == arcade.key.UP or key == arcade.key.DOWN:
+            self.player_sprite.change_y = 0
+        elif key == arcade.key.LEFT or key == arcade.key.RIGHT:
+            self.player_sprite.change_x = 0
 
     def update(self, delta_time):
         """ All the logic to move, and the game logic goes here. """
+        self.player_list.update()
+
         self.coin_list.update()
         coins_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
 
