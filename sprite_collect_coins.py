@@ -11,9 +11,11 @@ MOVEMENT_SPEED = 10
 class Player(arcade.Sprite):
 
     def update(self):
+        # update's the change of the sprite when being moved via keyboard
         self.center_x += self.change_x
         self.center_y += self.change_y
 
+        # Setting movement restrictions so that player sprite does not leave the window
         if self.left < 0:
             self.left = 0
         elif self.right > SCREEN_WIDTH - 1:
