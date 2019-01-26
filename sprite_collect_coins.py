@@ -6,6 +6,26 @@ SCREEN_HEIGHT = 600
 SPRITE_COIN_SCALING = 0.25
 SPRITE_PLAYER_SCALING = 0.1
 COIN_COUNT = 50
+MOVEMENT_SPEED = 10
+
+class Player(arcade.Sprite):
+
+    def update(self):
+        self.center_x += self.change_x
+        self.center_y += self.change_y
+
+        if self.left < 0:
+            self.left = 0
+        elif self.right > SCREEN_WIDTH - 1:
+            self.right = SCREEN_WIDTH - 1
+
+        if self.bottom < 0:
+            self.bottom = 0
+        elif self.top > SCREEN_HEIGHT - 1:
+            self.top = SCREEN_HEIGHT - 1
+
+
+
 
 class MyGame(arcade.Window):
     """ Main application class. """
@@ -26,7 +46,7 @@ class MyGame(arcade.Window):
         # start a new sprite list
         self.player_list = arcade.SpriteList()
         # set up the player sprite
-        self.player_sprite = arcade.Sprite("images/rabbitstand120.gif", SPRITE_PLAYER_SCALING)
+        self.player_sprite = Player("images/rabbitstand120.gif", SPRITE_PLAYER_SCALING)
         self.player_sprite.center_x = 300
         self.player_sprite.center_y = 300
         # Adding the player sprite to the list
